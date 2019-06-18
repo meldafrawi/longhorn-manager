@@ -17,19 +17,18 @@ steps:
   - name: socket
     path: /var/run/docker.sock
 
-- name: debug
+- name: stage-binaries
   pull: default
   image: rancher/dapper:1.11.2
   commands:
-  - env 
-  privileged: true
-  volumes:
-  - name: socket
-    path: /var/run/docker.sock
-
+  - "cp -r ./bin/* ./package/"
+  when:
+    event:
+    - push
 
 - name: docker-publish-master
   image: plugins/docker
+  depends_on:
   settings:
     context: package/
     custom_dns: 1.1.1.1
