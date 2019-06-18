@@ -22,6 +22,7 @@ steps:
   image: rancher/dapper:1.11.2
   commands:
   - "cp -r ./bin/* ./package/"
+  - "find / -iname launch-manager"
   when:
     event:
     - push
