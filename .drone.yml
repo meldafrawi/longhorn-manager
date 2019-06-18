@@ -25,13 +25,13 @@ steps:
     dockerfile: package/Dockerfile
     password:
       from_secret: docker_password
-    repo: longhornio/longhorn-manager
+    repo: meldafrawi/longhorn-manager
     tag: master
     username:
       from_secret: docker_username
   when:
     branch:
-    - master
+    - drone-config-debug
     event:
     - push
 
