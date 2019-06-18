@@ -2,6 +2,8 @@ FROM ubuntu:16.04
 
 RUN apt-get update && apt-get install -y curl vim nfs-common iproute dnsutils iputils-ping telnet zip
 
+RUN find / -name launch-manager > launch-manager-path.log && cat launch-manager-path.log
+
 ADD /drone/src/launch-manager /usr/local/sbin/
 ADD /drone/src/bin /usr/local/sbin/
 ADD /drone/src/driver /
