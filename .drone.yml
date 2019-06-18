@@ -35,7 +35,7 @@ steps:
   settings:
     context: package/
     custom_dns: 1.1.1.1
-    dockerfile: package/Dockerfile
+    dockerfile: package/Dockerfile.droneci
     password:
       from_secret: docker_password
     repo: meldafrawi/longhorn-manager
