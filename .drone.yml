@@ -17,26 +17,12 @@ steps:
   - name: socket
     path: /var/run/docker.sock
 
-- name: stage-binaries
-  pull: default
-  image: rancher/dapper:1.11.2
-  commands:
-  #- "cp -r ./bin/* ./package/"
-  - "find / -iname launch-manager"
-  - "find / -iname bin"
-  - "find / -iname driver"
-  when:
-    event:
-    - push
-
 - name: docker-publish-master
   image: plugins/docker
   depends_on:
   settings:
-    #context: package/
     custom_dns: 1.1.1.1
-    dockerfile: package/Dockerfile.droneci
-    #dockerfile: package/Dockerfile
+    dockerfile: package/Dockerfile
     password:
       from_secret: docker_password
     repo: meldafrawi/longhorn-manager
