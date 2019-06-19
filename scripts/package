@@ -22,8 +22,8 @@ fi
 
 trap 'rm -rf ./package/bin' exit
 
-docker build -t ${IMAGE} . -f package/Dockerfile
-
+docker build -t ${IMAGE} -f package/Dockerfile .
+ 
 echo Built ${IMAGE}
 
 echo ${IMAGE} > ./bin/latest_image
