@@ -4,9 +4,13 @@ RUN apt-get update && apt-get install -y curl vim nfs-common iproute dnsutils ip
 
 RUN find / -name launch-manager > launch-manager-path.log && echo "++++++" >> launch-manager-path.log  && cat launch-manager-path.log
 
-ADD /drone/src/launch-manager /usr/local/sbin/
-ADD /drone/src/bin /usr/local/sbin/
-ADD /drone/src/driver /
+COPY package/launch-manager /usr/local/sbin/
+COPY bin /usr/local/sbin/
+COPY driver /
+
+#ADD /drone/src/launch-manager /usr/local/sbin/
+#ADD /drone/src/bin /usr/local/sbin/
+#ADD /drone/src/driver /
 
 VOLUME /usr/local/sbin
 EXPOSE 9500
